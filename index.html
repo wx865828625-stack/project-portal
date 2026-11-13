@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="wx865828625-stack 的项目统一入口，集中访问在线工具和 GitHub 仓库。">
+  <meta name="description" content="wx865828625-stack 的公开演示项目入口，集中访问在线工具和 GitHub 仓库。">
   <title>Project Space · 项目统一入口</title>
   <style>
     :root { --ink:#18212f; --muted:#687487; --line:#e4e9ef; --paper:#fbfcfe; --blue:#246bfe; --mint:#159a76; --amber:#c97916; --navy:#14253d; }
@@ -28,9 +28,6 @@
     .stat span { color:var(--muted); font-size:11px; margin-top:3px; display:block; }
     .toolbar { display:flex; align-items:center; justify-content:space-between; gap:18px; margin:10px 0 18px; }
     .toolbar h2 { font-size:18px; margin:0; letter-spacing:-.03em; }
-    .filters { display:flex; gap:6px; flex-wrap:wrap; }
-    .filter { border:1px solid var(--line); background:#fff; color:var(--muted); border-radius:7px; padding:8px 12px; cursor:pointer; font-size:12px; font-weight:700; }
-    .filter.active, .filter:hover { color:var(--blue); border-color:#b5ccff; background:#f3f7ff; }
     .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; padding-bottom:74px; }
     .card { position:relative; overflow:hidden; min-height:280px; display:flex; flex-direction:column; border:1px solid var(--line); border-radius:12px; background:#fff; transition:transform .2s, box-shadow .2s, border-color .2s; }
     .card:hover { transform:translateY(-3px); border-color:#c7d5e9; box-shadow:0 14px 34px rgba(24,50,85,.1); }
@@ -38,8 +35,6 @@
     .card-visual::after { content:""; width:190px; height:190px; border:1px solid rgba(255,255,255,.22); border-radius:50%; position:absolute; right:-58px; top:-90px; }
     .visual-flow { background-image:linear-gradient(90deg,rgba(18,42,70,.92),rgba(18,42,70,.18)),url('./assets/flowplan-preview.png'); background-size:cover; background-position:center 18%; }
     .visual-ai { background-image:linear-gradient(90deg,rgba(6,75,68,.92),rgba(6,75,68,.12)),url('./assets/dashboard-preview.png'); background-size:cover; background-position:center 10%; }
-    .visual-code { background:linear-gradient(135deg,#333c4c,#737f95); }
-    .visual-private { background:linear-gradient(135deg,#5a3b27,#c48752); }
     .visual-label { color:#fff; position:relative; z-index:1; }
     .visual-label .kind { display:block; font-size:10px; opacity:.78; letter-spacing:.12em; text-transform:uppercase; margin-bottom:5px; }
     .visual-label strong { font-size:20px; letter-spacing:-.04em; }
@@ -48,8 +43,6 @@
     .card h3 { margin:0; font-size:17px; letter-spacing:-.03em; }
     .badge { flex:none; border-radius:20px; padding:4px 8px; font-size:10px; font-weight:800; }
     .badge-live { background:#e7f8f1; color:#148461; }
-    .badge-code { background:#eef2f7; color:#687487; }
-    .badge-private { background:#fff3e5; color:#ad6612; }
     .desc { color:var(--muted); font-size:13px; line-height:1.65; margin:11px 0 17px; }
     .tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; }
     .tag { color:#566274; background:#f4f6f9; border-radius:5px; padding:4px 7px; font-size:10px; }
@@ -59,7 +52,6 @@
     .action.primary:hover { background:var(--blue); }
     .action.secondary { background:#f3f5f8; color:#566274; }
     .action.secondary:hover { background:#e8edf4; color:var(--ink); }
-    .action.disabled { color:#a2acb8; background:#f7f8fa; cursor:not-allowed; }
     footer { border-top:1px solid var(--line); padding:22px 0 28px; color:#8b96a5; font-size:11px; display:flex; justify-content:space-between; }
     @media (max-width:760px) { .shell { padding:0 18px; } .topbar { height:64px; } .hero { padding:52px 0 36px; display:block; } .hero-panel { margin-top:34px; } .grid { grid-template-columns:1fr; } .toolbar { align-items:flex-start; flex-direction:column; } footer { display:block; line-height:1.8; } }
   </style>
@@ -74,41 +66,23 @@
       <div>
         <p class="eyebrow">A single front door for useful work</p>
         <h1>项目，从这里开始。</h1>
-        <p class="intro">把在线工具、数据看板和代码仓库放在一个安静、清晰的入口里。先体验，再深入源码。</p>
-        <div class="stats"><div class="stat"><strong>4</strong><span>项目</span></div><div class="stat"><strong>2</strong><span>在线演示</span></div><div class="stat"><strong>1</strong><span>私有业务项目</span></div></div>
+        <p class="intro">把两个公开演示集中在一个安静、清晰的入口里。先体验，再深入源码。</p>
+        <div class="stats"><div class="stat"><strong>2</strong><span>公开演示</span></div><div class="stat"><strong>2</strong><span>在线体验</span></div></div>
       </div>
-      <aside class="hero-panel"><strong>快速找到你要的东西</strong><p>在线演示适合直接使用，公开仓库适合查看实现，内部项目仅作为工作区记录，不会把敏感数据暴露到公网。</p></aside>
+      <aside class="hero-panel"><strong>公开演示，直接体验</strong><p>两个项目都可以直接打开使用，也可以进入对应的 GitHub 仓库查看实现。</p></aside>
     </section>
-    <div class="toolbar"><h2>项目目录</h2><div class="filters" role="group" aria-label="筛选项目"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="live">在线体验</button><button class="filter" data-filter="code">公开源码</button><button class="filter" data-filter="private">内部项目</button></div></div>
+    <div class="toolbar"><h2>公开演示项目</h2></div>
     <section class="grid" id="project-grid">
-      <article class="card" data-kind="live">
+      <article class="card">
         <div class="card-visual visual-flow"><div class="visual-label"><span class="kind">Live product</span><strong>FlowPlan</strong></div></div>
         <div class="card-body"><div class="card-title"><h3>项目甘特图</h3><span class="badge badge-live">在线体验</span></div><p class="desc">面向项目排期的协作工具，支持任务依赖、资源、基线、风险、报表和项目组合视图。</p><div class="tags"><span class="tag">排期</span><span class="tag">资源</span><span class="tag">项目组合</span></div><div class="actions"><a class="action primary" href="https://wx865828625-stack.github.io/project-gantt/" target="_blank" rel="noreferrer">打开工具 ↗</a><a class="action secondary" href="https://github.com/wx865828625-stack/project-gantt" target="_blank" rel="noreferrer">查看源码</a></div></div>
       </article>
-      <article class="card" data-kind="live">
+      <article class="card">
         <div class="card-visual visual-ai"><div class="visual-label"><span class="kind">Live product</span><strong>AI Resource</strong></div></div>
         <div class="card-body"><div class="card-title"><h3>座舱 AI 资源看板</h3><span class="badge badge-live">在线体验</span></div><p class="desc">用于研发资源规划的交互式看板，提供投入分析、月度趋势、工作项明细和年度预测视图。</p><div class="tags"><span class="tag">数据看板</span><span class="tag">资源预测</span><span class="tag">合成数据</span></div><div class="actions"><a class="action primary" href="https://wx865828625-stack.github.io/ai-resource-dashboard-demo/" target="_blank" rel="noreferrer">打开看板 ↗</a><a class="action secondary" href="https://github.com/wx865828625-stack/ai-resource-dashboard-demo" target="_blank" rel="noreferrer">查看源码</a></div></div>
-      </article>
-      <article class="card" data-kind="code">
-        <div class="card-visual visual-code"><div class="visual-label"><span class="kind">Open source</span><strong>FreelanceFlow</strong></div></div>
-        <div class="card-body"><div class="card-title"><h3>自由职业平台</h3><span class="badge badge-code">公开源码</span></div><p class="desc">全栈 TypeScript 单体仓库，包含工作机会、用户资料、消息、通知、计费和管理后台。</p><div class="tags"><span class="tag">Next.js</span><span class="tag">Express</span><span class="tag">Prisma</span></div><div class="actions"><a class="action primary" href="https://github.com/wx865828625-stack/bug-bounty" target="_blank" rel="noreferrer">查看仓库 ↗</a></div></div>
-      </article>
-      <article class="card" data-kind="private">
-        <div class="card-visual visual-private"><div class="visual-label"><span class="kind">Internal workspace</span><strong>AI Resource Core</strong></div></div>
-        <div class="card-body"><div class="card-title"><h3>AI 资源业务版</h3><span class="badge badge-private">内部项目</span></div><p class="desc">包含登录、后端服务和企业接口配置的完整业务版本，仅保留在私有仓库中。</p><div class="tags"><span class="tag">后端服务</span><span class="tag">企业接口</span><span class="tag">私有仓库</span></div><div class="actions"><a class="action secondary" href="https://github.com/wx865828625-stack/ai-resource-dashboard" target="_blank" rel="noreferrer">进入私有仓库 ↗</a></div></div>
       </article>
     </section>
   </main>
   <footer class="shell"><span>Project Space · wx865828625-stack</span><span>Updated 2026</span></footer>
-  <script>
-    const buttons = document.querySelectorAll('.filter');
-    const cards = document.querySelectorAll('.card');
-    buttons.forEach(button => button.addEventListener('click', () => {
-      buttons.forEach(item => item.classList.remove('active'));
-      button.classList.add('active');
-      const filter = button.dataset.filter;
-      cards.forEach(card => { card.hidden = filter !== 'all' && card.dataset.kind !== filter; });
-    }));
-  </script>
 </body>
 </html>
